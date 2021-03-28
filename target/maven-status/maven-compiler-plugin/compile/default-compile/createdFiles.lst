@@ -1,0 +1,15 @@
+jpa/business/Fiche.class
+jpa/dao/IGenericDao.class
+jpa/dao/CollaborateurDao.class
+jpa/business/Manager.class
+jpa/business/Collaborateur.class
+jpa/dao/FicheDao.class
+jpa/dao/TableauKanbanDao.class
+jpa/business/Section.class
+jpa/dao/ServiceDao.class
+jpa/business/Developpeur.class
+jpa/EntityManagerHelper.class
+servlet/TableauKanbanInfo.class
+jpa/business/TableauKanban.class
+jpa/JpaTest.class
+servlet/MyServelet.class
