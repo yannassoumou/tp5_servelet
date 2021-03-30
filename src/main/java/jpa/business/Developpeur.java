@@ -1,10 +1,30 @@
 package jpa.business;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 
 @Entity
+@DiscriminatorValue("Developpeur")
 public class Developpeur extends Collaborateur{
-    public Developpeur(String mail, String name) {
-        super(mail, name);
+
+    private Manager manager;
+
+    public Developpeur(String matricule, String mail, String name) {
+        super(matricule, mail, name);
     }
+
+    public Developpeur() {
+
+    }
+
+    @OneToOne
+    public Manager getManager() {
+        return manager;
+    }
+
+    public void setManager(Manager manager) {
+        this.manager = manager;
+    }
+
 }

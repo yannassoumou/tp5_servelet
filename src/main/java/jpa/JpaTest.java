@@ -1,29 +1,42 @@
 package jpa;
 
-import jpa.business.Collaborateur;
-import jpa.business.Fiche;
-import jpa.business.Section;
-import jpa.business.TableauKanban;
+import jpa.business.*;
+import jpa.dao.CollaborateurDao;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
-public class JpaTest {
+@SpringBootApplication
+public class JpaTest implements CommandLineRunner {
 
     /**
      * @param args
      */
     static EntityManager manager = EntityManagerHelper.getEntityManager();
 
+    @Autowired
+     CollaborateurDao collaborateurDao;
+
+
     public static void main(String[] args) {
 
+        SpringApplication.run(JpaTest.class, args);
+
+    }
+
+    @Override
+    public void run(String... args) {
 
         EntityTransaction tx = manager.getTransaction();
         tx.begin();
 
 
         try {
-            Collaborateur c = createCollaborateur("yannassoumou@gmail.com", "Assoumou Anghai Yann");
+            Collaborateur c = createCollaborateur("2502A97", "yannassoumou@gmail.com", "Assoumou Anghai Yann");
             Fiche f = createFiche("Fiche 1");
             Fiche fs = createFiche("Fiche 2");
             TableauKanban tbk = createKanban("Tableau Kanban 1");
@@ -34,9 +47,12 @@ public class JpaTest {
             addFicheCollaborateur(c, f);
             addFicheCollaborateur(c, fs);
 
+            Manager c1 = new Manager("54646DSD", "ehuie@gmail.com", "Constant");
+
             //addSectionKanban(fs,tbk,"termine");
 
             manager.persist(c);
+            manager.persist(c1);
             manager.persist(f);
             manager.persist(fs);
             manager.persist(tbk);
@@ -47,10 +63,10 @@ public class JpaTest {
 
         tx.commit();
 
-
         manager.close();
         EntityManagerHelper.closeEntityManagerFactory();
         //		factory.close();
+        System.out.println(collaborateurDao.findAll().size());
     }
 
     private static void addFicheCollaborateur(Collaborateur c, Fiche fs) {
@@ -70,9 +86,9 @@ public class JpaTest {
         return new Section(name, b);
     }
 
-    private static Collaborateur createCollaborateur(String mail, String name) {
+    private static Collaborateur createCollaborateur(String matricule, String mail, String name) {
         //manager.persist(c);
-        return new Collaborateur(mail, name);
+        return new Collaborateur(matricule, mail, name);
     }
 
     private static Fiche createFiche(String name) {
