@@ -9,7 +9,7 @@ import java.util.Collection;
 @DiscriminatorColumn(name = "type_collaborateur")
 @DiscriminatorValue("Collaborateur")
 public class Collaborateur {
-
+    
     private String matricule;
     private String email;
     String name;
@@ -50,5 +50,21 @@ public class Collaborateur {
     public void elementFiche(Fiche f) {
         if (f != null && !fiche.contains(f))
             fiche.add(f);
+    }
+
+    public String getMatricule() {
+        return matricule;
+    }
+
+    public void setMatricule(String matricule) {
+        this.matricule = matricule;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

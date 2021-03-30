@@ -7,7 +7,6 @@ import java.util.Collection;
 @Entity
 public class Section {
 
-
     private int id_section;
     private String name_section;
     private Boolean state;
@@ -62,5 +61,21 @@ public class Section {
     public void elementFiche(Fiche f) {
         if (f != null && !parentFiche.contains(f))
             parentFiche.add(f);
+    }
+
+    public String getName_section() {
+        return name_section;
+    }
+
+    public void setName_section(String name_section) {
+        this.name_section = name_section;
+    }
+
+    public Boolean getState() {
+        return state;
+    }
+
+    public void setState(Boolean state) {
+        this.state = state;
     }
 }
