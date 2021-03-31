@@ -2,7 +2,10 @@ package jpa.business;
 
 
 import javax.persistence.*;
+import java.sql.Array;
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Fiche {
@@ -17,7 +20,8 @@ public class Fiche {
 
     String timeTodo;
 
-    String tag;
+    @OneToMany
+    List<Tag> ficheTag = new ArrayList<>();
 
     String lieu;
     String url;
