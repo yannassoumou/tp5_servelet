@@ -2,6 +2,8 @@ package jpa.business;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Fiche {
@@ -10,7 +12,8 @@ public class Fiche {
     String libelle;
     Date dateFin;
     String timeTodo;
-    String tag;
+
+    List<Tag> ficheTag = new ArrayList<>();
     String lieu;
     String url;
     String note;
@@ -32,6 +35,16 @@ public class Fiche {
 
     public Fiche() {
 
+    }
+
+
+    @OneToMany
+    public List<Tag> getFicheTag() {
+        return ficheTag;
+    }
+
+    public void setFicheTag(List<Tag> ficheTag) {
+        this.ficheTag = ficheTag;
     }
 
     @ManyToOne
@@ -86,14 +99,6 @@ public class Fiche {
 
     public void setTimeTodo(String timeTodo) {
         this.timeTodo = timeTodo;
-    }
-
-    public String getTag() {
-        return tag;
-    }
-
-    public void setTag(String tag) {
-        this.tag = tag;
     }
 
     public String getLieu() {
