@@ -1,31 +1,21 @@
 package jpa.business;
 
-
 import javax.persistence.*;
-import java.sql.Array;
 import java.sql.Date;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 public class Fiche {
 
-
     int id_fiche;
     String libelle;
     Date dateFin;
-
-
-    Collaborateur responsable;
-
     String timeTodo;
-
-    @OneToMany
-    List<Tag> ficheTag = new ArrayList<>();
-
+    String tag;
     String lieu;
     String url;
     String note;
+
+    Collaborateur responsable;
 
 
     Section section;
@@ -71,5 +61,64 @@ public class Fiche {
     public void setSection(Section section) {
         this.section = section;
     }
+
+
+    public String getLibelle() {
+        return libelle;
+    }
+
+    public void setLibelle(String libelle) {
+        this.libelle = libelle;
+    }
+
+
+    public Date getDateFin() {
+        return dateFin;
+    }
+
+    public void setDateFin(Date dateFin) {
+        this.dateFin = dateFin;
+    }
+
+    public String getTimeTodo() {
+        return timeTodo;
+    }
+
+    public void setTimeTodo(String timeTodo) {
+        this.timeTodo = timeTodo;
+    }
+
+    public String getTag() {
+        return tag;
+    }
+
+    public void setTag(String tag) {
+        this.tag = tag;
+    }
+
+    public String getLieu() {
+        return lieu;
+    }
+
+    public void setLieu(String lieu) {
+        this.lieu = lieu;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public String getNote() {
+        return note;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
+    }
+
 
 }
